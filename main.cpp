@@ -3,7 +3,6 @@
 using namespace std;
 
 struct expense{
-    int id;
     string title;
     string category;
     float amount;
@@ -12,9 +11,29 @@ struct expense{
 
 expense e[100];
 
-void addexpense(){}
+void addexpense(){
+    for(int a=0;a<100;a++){
+        cout<<"Title: ";
+        cin>>e[a].title;
+        cout<<"Category: ";
+        cin>>e[a].category;
+        cout<<"Amount: ";
+        cin>>e[a].amount;
+        cout<<"Date: ";
+        cin>>e[a].date;
+        cout<<endl;
+        cout<<"Expense Add Successfully...."<<endl;
+    }
+}
 
-void viewexpense(){}
+void viewexpense(){
+    for(int v=0;v>100;v++){
+        cout<<"Title: "<<e[v].title<<endl;
+        cout<<"Category: "<<e[v].category<<endl;
+        cout<<"Amount: "<<e[v].amount<<endl;
+        cout<<"Date: "<<e[v].date<<endl;
+    }
+}
 
 void searchexpense(){}
 
@@ -26,7 +45,12 @@ void calculatetotalexpense(){}
 
 void clearscreen(){}
 
+void menu(){
+    
+}
+
 int main(){
+    while(true){
     cout<<"======================================================"<<endl;
     cout<<"||                  Expense Tracker                 || "<<endl;
     cout<<"======================================================"<<endl;
@@ -64,4 +88,5 @@ int main(){
     clearscreen();
     break;
     }
+}
 }
