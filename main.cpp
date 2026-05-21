@@ -1,6 +1,8 @@
 #include<iostream>
 #include<string>
 using namespace std;
+void clearscreen();
+
 
 struct expense{
     string title;
@@ -10,9 +12,14 @@ struct expense{
 };
 
 expense e[100];
+int a=0;
 
 void addexpense(){
-    for(int a=0;a<100;a++){
+    if(a>=100){
+        cout<<"Storage Full.....";
+    }
+    else{
+        cout<<endl;
         cout<<"Title: ";
         cin>>e[a].title;
         cout<<"Category: ";
@@ -21,32 +28,103 @@ void addexpense(){
         cin>>e[a].amount;
         cout<<"Date: ";
         cin>>e[a].date;
-        cout<<endl;
-        cout<<"Expense Add Successfully...."<<endl;
+        cout<<"Expense Add Successfully...."<<endl<<endl;
+        a++;
     }
+    clearscreen();
 }
 
 void viewexpense(){
-    for(int v=0;v>100;v++){
-        cout<<"Title: "<<e[v].title<<endl;
-        cout<<"Category: "<<e[v].category<<endl;
-        cout<<"Amount: "<<e[v].amount<<endl;
-        cout<<"Date: "<<e[v].date<<endl;
+    for(int v=0; v<a; v++){
+        if(e[v].title!=" "){
+            cout<<endl;
+            cout<<"Title: "<<e[v].title<<endl;
+            cout<<"Category: "<<e[v].category<<endl;
+            cout<<"Amount: "<<e[v].amount<<endl;
+            cout<<"Date: "<<e[v].date<<endl;
+            cout<<endl<<endl;
+        }
+        
     }
+    clearscreen();
 }
 
-void searchexpense(){}
+void searchexpense(){
+    string s;
+    bool found=false;
+    cout<<"Enter Title:";
+    cin>>s;
+    for(int se=0;se<a;se++){
+        if(s==e[se].title){
+            cout<<endl;
+            cout<<"Title: "<<e[se].title<<endl;
+            cout<<"Category: "<<e[se].category<<endl;
+            cout<<"Amount: "<<e[se].amount<<endl;
+            cout<<"Date: "<<e[se].date<<endl;
+            cout<<endl<<endl;
+            found=true;
+        }
+    }
+    if(found==false){
+        cout<<"No Record Found...."<<endl;
+    }
+    clearscreen();
+}
 
-void deleteexpense(){}
+void deleteexpense(){
+    string d;
+    bool del=false;
+    cout<<"Enter Category to Delete: ";
+    cin>>d;
+    for(int D=0;D<a;D++){
+        if(d==e[D].category){
+            e[D].title=" ";
+            e[D].category=" ";
+            e[D].amount=0;
+            e[D].date=" ";
+            del=true;
+        }
+    }
+    if(del==false){
+        cout<<"No Record Found....";
+    }
+    clearscreen();
+}
 
-void updateexpense(){}
+void updateexpense(){
+    string u;
+    bool update=false;
+    cout<<"Enter Category to Update Amount: ";
+    cin>>u;
+    for(int up=0;up<a;up++){
+        if(u==e[up].category){
+            cout<<endl;
+            cout<<"Amount: ";
+            cin>>e[up].amount;
+            cout<<endl<<"Amount Updated Successfully...."<<endl;
+            update=true;
+        }
+    }
+    if(update==false){
+       cout<<"No Record Found"<<endl;
+    }
+    clearscreen();
+}
 
-void calculatetotalexpense(){}
+void calculatetotalexpense(){
+    float total=0;
+    for(int c=0;c<a;c++){
+        total+=e[c].amount;
+    }
+    cout<<"Total Expenses Amount is: "<<total<<endl;
+    clearscreen();
+}
 
-void clearscreen(){}
-
-void menu(){
-    
+void clearscreen(){
+    cout<<"\nPress Enter to Continue....";
+    cin.ignore();
+    cin.get();
+    system("cls");
 }
 
 int main(){
@@ -85,8 +163,7 @@ int main(){
     calculatetotalexpense();
     break;
     case 7:
-    clearscreen();
-    break;
+    return 0;
     }
 }
 return 0;
