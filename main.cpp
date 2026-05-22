@@ -20,9 +20,9 @@ void addexpense(){
     }
     else{
         cout<<endl;
-        cout<<"Title: ";
+        cout<<"Title (Single Word e.g; office): ";
         cin>>e[a].title;
-        cout<<"Category: ";
+        cout<<"Category (Single Word e.g; bill): ";
         cin>>e[a].category;
         cout<<"Amount: ";
         cin>>e[a].amount;
@@ -38,13 +38,15 @@ void viewexpense(){
     for(int v=0; v<a; v++){
         if(e[v].title!=" "){
             cout<<endl;
+            cout<<"======================="<<endl;
+            cout<<"||      Expense "<<v+1<<"      ||"<<endl;
+            cout<<"======================="<<endl;
             cout<<"Title: "<<e[v].title<<endl;
             cout<<"Category: "<<e[v].category<<endl;
             cout<<"Amount: "<<e[v].amount<<endl;
             cout<<"Date: "<<e[v].date<<endl;
-            cout<<endl<<endl;
+            cout<<endl;
         }
-        
     }
     clearscreen();
 }
@@ -57,11 +59,14 @@ void searchexpense(){
     for(int se=0;se<a;se++){
         if(s==e[se].title){
             cout<<endl;
+            cout<<"======================="<<endl;
+            cout<<"||      Expense "<<se+1<<"      ||"<<endl;
+            cout<<"======================="<<endl;
             cout<<"Title: "<<e[se].title<<endl;
             cout<<"Category: "<<e[se].category<<endl;
             cout<<"Amount: "<<e[se].amount<<endl;
             cout<<"Date: "<<e[se].date<<endl;
-            cout<<endl<<endl;
+            cout<<endl;
             found=true;
         }
     }
@@ -94,14 +99,13 @@ void deleteexpense(){
 void updateexpense(){
     string u;
     bool update=false;
-    cout<<"Enter Category to Update Amount: ";
+    cout<<endl<<"Enter Category to Update Amount: ";
     cin>>u;
     for(int up=0;up<a;up++){
         if(u==e[up].category){
-            cout<<endl;
             cout<<"Amount: ";
             cin>>e[up].amount;
-            cout<<endl<<"Amount Updated Successfully...."<<endl;
+            cout<<"Amount Updated Successfully...."<<endl;
             update=true;
         }
     }
@@ -116,7 +120,7 @@ void calculatetotalexpense(){
     for(int c=0;c<a;c++){
         total+=e[c].amount;
     }
-    cout<<"Total Expenses Amount is: "<<total<<endl;
+    cout<<endl<<"Total Expenses Amount is: "<<total<<endl;
     clearscreen();
 }
 
