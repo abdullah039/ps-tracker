@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<fstream>
 using namespace std;
 void clearscreen();
 
@@ -19,37 +20,64 @@ void addexpense(){
         cout<<"Storage Full.....";
     }
     else{
+        ofstream fout("store.txt",ios::app | ios::out);
         cout<<endl;
         cout<<"Title (Single Word e.g; office): ";
         cin>>e[a].title;
+        fout<<e[a].title<<endl;
         cout<<"Category (Single Word e.g; bill): ";
         cin>>e[a].category;
+        fout<<e[a].category<<endl;
         cout<<"Amount: ";
         cin>>e[a].amount;
+        fout<<e[a].amount<<endl;
         cout<<"Date: ";
         cin>>e[a].date;
+        fout<<e[a].date<<endl;
+        fout<<"--------------------"<<endl;
         cout<<"Expense Add Successfully...."<<endl<<endl;
         a++;
+        fout.close();
     }
     clearscreen();
 }
 
 void viewexpense(){
-    for(int v=0; v<a; v++){
-        if(e[v].title!=" "){
-            cout<<endl;
-            cout<<"======================="<<endl;
-            cout<<"||      Expense "<<v+1<<"      ||"<<endl;
-            cout<<"======================="<<endl;
-            cout<<"Title: "<<e[v].title<<endl;
-            cout<<"Category: "<<e[v].category<<endl;
-            cout<<"Amount: "<<e[v].amount<<endl;
-            cout<<"Date: "<<e[v].date<<endl;
-            cout<<endl;
-        }
+    ifstream fin("store.txt",ios::in);
+    // for(int v=0; v<a; v++){
+    //     if(e[v].title!=" "){
+    //         cout<<endl;
+    //         cout<<"======================="<<endl;
+    //         cout<<"||      Expense "<<v+1<<"      ||"<<endl;
+    //         cout<<"======================="<<endl;
+    //         cout<<"Title: "<<e[v].title<<endl;
+    //         cout<<"Category: "<<e[v].category<<endl;
+    //         cout<<"Amount: "<<e[v].amount<<endl;
+    //         cout<<"Date: "<<e[v].date<<endl;
+    //         cout<<endl;
+    //     }
+    // }
+    cout<<"======================="<<endl;
+    cout<<"||      Expenses      ||"<<endl;
+    cout<<"======================="<<endl;
+    string t,c,a,d,line;
+    while(getline(fin,t)){
+    getline(fin,c);
+    getline(fin,a);
+    getline(fin,d);
+    getline(fin,line);
+
+    cout<<"Title: "<<t<<endl;
+    cout<<"Category: "<<c<<endl;
+    cout<<"Amount: "<<a<<endl;
+    cout<<"Date: "<<d<<endl;
+    cout<<"--------------------------"<<endl;
     }
+    
+    fin.close();
     clearscreen();
 }
+
 
 void searchexpense(){
     string s;
@@ -149,25 +177,34 @@ int main(){
 
     switch(option){
     case 1:
+    clearscreen();
     addexpense();
     break;
     case 2:
+    clearscreen();
     viewexpense();
     break;
     case 3:
+    clearscreen();
     searchexpense();
     break;
     case 4:
+    clearscreen();
     deleteexpense();
     break;
     case 5:
+    clearscreen();
     updateexpense();
     break;
     case 6:
+    clearscreen();
     calculatetotalexpense();
     break;
     case 7:
     return 0;
+    default:
+    cout<<"Invalid Option...";
+    clearscreen();
     }
 }
 return 0;
