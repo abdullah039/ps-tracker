@@ -176,36 +176,38 @@ int main(){
     cin>>option;
 
     switch(option){
-    case 1:
-    clearscreen();
-    addexpense();
-    break;
-    case 2:
-    clearscreen();
-    viewexpense();
-    break;
-    case 3:
-    clearscreen();
-    searchexpense();
-    break;
-    case 4:
-    clearscreen();
-    deleteexpense();
-    break;
-    case 5:
-    clearscreen();
-    updateexpense();
-    break;
-    case 6:
-    clearscreen();
-    calculatetotalexpense();
-    break;
-    case 7:
-    return 0;
-    default:
-    cout<<"Invalid Option...";
-    clearscreen();
+        case 1:
+        clearscreen();
+        addexpense();
+        break;
+        case 2:
+        clearscreen();
+        viewexpense();
+        break;
+        case 3:
+        clearscreen();
+        searchexpense();
+        break;
+        case 4:
+        clearscreen();
+        deleteexpense();
+        break;
+        case 5:
+        clearscreen();
+        updateexpense();
+        break;
+        case 6:
+        clearscreen();
+        calculatetotalexpense();
+        break;
+        case 7:
+        return 0;
+        default:
+        cout<<"Invalid Option...";
+        clearscreen();
+        break;
     }
 }
+
 return 0;
 }
